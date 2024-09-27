@@ -43,36 +43,36 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $biografia = trim($_POST['biografia']);
 
   $erro = false;
-  $mensagemErro = "";
-  $sucesso = "Formulário enviado com sucesso!";
+  $mensagem = "";
+  $sucesso = "Cadastro concluído com sucesso!";
 
   if (empty($nome) || str_word_count($nome) < 2) {
     $erro = true;
-    $mensagemErro .= "Insira ao menos dois nomes!\\n";
+    $mensagem .= "O nome deve conter pelo menos dois nomes.\\n";
   }
 
   if (empty($email) || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
     $erro = true;
-    $mensagemErro .= "Email inválido.\\n";
+    $mensagem .= "O campo 'E-mail' é obrigatório.\\n";
   }
   
   if (empty($nascimento)) {
     $erro = true;
-    $mensagemErro .= "Insira a data de nascimento.\\n";
+    $mensagem .= "O campo 'Data de Nascimento' é obrigatório.\\n";
   }
 
   if (empty($genero)) {
     $erro = true;
-    $mensagemErro .= "Insira seu gênero.\\n";
+    $mensagem .= "O campo 'Gênero' é obrigatório.\\n";
   }
 
   if (empty($biografia)) {
     $erro = true;
-    $mensagemErro .= "Insira a biografia.\\n";
+    $mensagem .= "O campo 'Biografia' é obrigatório.\\n";
   }
 
   if ($erro) {
-    echo "<script>alert('$mensagemErro')</script>";
+    echo "<script>alert('$mensagem')</script>";
   } else {
     echo "<script>alert('$sucesso')</script>";
   }
